@@ -23,7 +23,7 @@
             succ(@(message.c_str()));
         });
     }, [self, fail](int errorCode, std::string message) {
-        dispatch_sync(dispatch_get_main_queue(), ^{
+        dispatch_async(dispatch_get_main_queue(), ^{
             fail(errorCode, @(message.c_str()));
         });
     });
@@ -339,7 +339,7 @@
                          });
 }
 
--(void)sdkGetSessionList:(Succ)succ succ:(Fail)fail{
+-(void)sdkGetSessionList:(Succ)succ fail:(Fail)fail{
     
     SdkGetSessionList([self, succ](std::string message) {
         succ(@(message.c_str()));

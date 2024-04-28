@@ -88,7 +88,7 @@
             succ(@(message.c_str()));
         });
     }, [self, fail](int errorCode, std::string message) {
-        dispatch_sync(dispatch_get_main_queue(), ^{
+        dispatch_async(dispatch_get_main_queue(), ^{
             fail(errorCode, @(message.c_str()));
         });
     }, msgCallback, notifyCallback, eventCallback, userData);

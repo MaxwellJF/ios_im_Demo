@@ -42,6 +42,11 @@
         kLog(data)
         [[LEIGODIMLoginManager sharedLoginManager] sdkLogin:3 userId:6 succ:^(NSString *data) {
             kLog(data)
+            [[LEIGODIMLoginManager sharedLoginManager] sdkGetSessionList:^(NSString *data) {
+                kLog(data)
+            } fail:^(int code, NSString *msg) {
+                kLog(msg)
+            }];
         } fail:^(int code, NSString *msg) {
             kLog(@"login failed")
         }];
